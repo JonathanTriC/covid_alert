@@ -1,6 +1,11 @@
+import 'package:covid_app/models/hospital_model.dart';
+// import 'package:covid_app/pages/hospital_detail.dart';
+import 'package:covid_app/pages/hospital_page.dart';
+import 'package:covid_app/pages/newsfeed_page.dart';
 import 'package:covid_app/pages/notification_page.dart';
+import 'package:covid_app/pages/symptoms_page.dart';
 import 'package:covid_app/theme.dart';
-import 'package:covid_app/widgets/bottom_app_bar.dart';
+import 'package:covid_app/widgets/news_tile.dart';
 import 'package:covid_app/widgets/service.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +15,6 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          child: BottomBar(),
-        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -83,7 +85,7 @@ class HomePage extends StatelessWidget {
                       ),
                       child: Container(
                         height: 150,
-                        width: double.infinity,
+                        width: MediaQuery.of(context).size.width,
                         child: Container(
                           decoration: BoxDecoration(
                             color: blueColor,
@@ -177,9 +179,22 @@ class HomePage extends StatelessWidget {
                         'asset/result_icon.png',
                         'Result',
                       ),
-                      Service(
-                        'asset/hospital_icon.png',
-                        'Hospitals',
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HospitalPage(),
+                            ),
+                          );
+                        },
+                        child: Service(
+                          'asset/hospital_icon.png',
+                          'Hospitals',
+                        ),
                       ),
                     ],
                   ),
@@ -198,13 +213,39 @@ class HomePage extends StatelessWidget {
                         'asset/statistic_icon.png',
                         'Statistics',
                       ),
-                      Service(
-                        'asset/symptoms_icon.png',
-                        'Symptoms',
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SymptomsPage(),
+                            ),
+                          );
+                        },
+                        child: Service(
+                          'asset/symptoms_icon.png',
+                          'Symptoms',
+                        ),
                       ),
-                      Service(
-                        'asset/newsfeed_icon.png',
-                        'Newsfeed',
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NewsfeedPage(),
+                            ),
+                          );
+                        },
+                        child: Service(
+                          'asset/newsfeed_icon.png',
+                          'Newsfeed',
+                        ),
                       ),
                     ],
                   ),
@@ -243,7 +284,7 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                       horizontal: 24,
                     ),
-                    itemCount: 3,
+                    itemCount: hospitals.length,
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.only(
@@ -251,85 +292,105 @@ class HomePage extends StatelessWidget {
                         ),
                         height: 110,
                         width: 297,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              child: Image.asset(
-                                'asset/hospital_img.png',
-                                height: 95,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HospitalPage(),
                               ),
-                              top: 8,
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              right: 10,
                             ),
-                            Positioned(
-                              child: Text(
-                                'RSUD Cengkareng',
-                                style: hospitalNameTextStyle,
-                              ),
-                              top: 15,
-                              left: 100,
+                            height: 110,
+                            width: 297,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
                             ),
-                            Positioned(
-                              child: Text(
-                                'Cengkareng, Jakarta Barat',
-                                style: hospitalPlaceTextStyle,
-                              ),
-                              top: 33,
-                              left: 100,
-                            ),
-                            Positioned(
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '4,5',
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  child: Image.asset(
+                                    hospitals[index].imageUrl!,
+                                    height: 95,
+                                  ),
+                                  top: 8,
+                                ),
+                                Positioned(
+                                  child: Text(
+                                    hospitals[index].title!,
                                     style: hospitalNameTextStyle,
                                   ),
-                                  SizedBox(
-                                    width: 5,
+                                  top: 15,
+                                  left: 100,
+                                ),
+                                Positioned(
+                                  child: Text(
+                                    'Cengkareng, Jakarta Barat',
+                                    style: hospitalPlaceTextStyle,
                                   ),
-                                  Image.asset(
-                                    'asset/star_icon.png',
-                                    width: 70,
+                                  top: 33,
+                                  left: 100,
+                                ),
+                                Positioned(
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        '4,5',
+                                        style: hospitalNameTextStyle,
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Image.asset(
+                                        'asset/star_icon.png',
+                                        width: 70,
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        '(60)',
+                                        style: hospitalNameTextStyle,
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 5,
+                                  top: 53,
+                                  left: 100,
+                                ),
+                                Positioned(
+                                  child: Text(
+                                    'Always Open',
+                                    style: hospitalOpenTextStyle,
                                   ),
-                                  Text(
-                                    '(60)',
-                                    style: hospitalNameTextStyle,
+                                  top: 75,
+                                  left: 100,
+                                ),
+                                Positioned(
+                                  child: Image.asset(
+                                    'asset/loc_icon.png',
+                                    height: 30,
                                   ),
-                                ],
-                              ),
-                              top: 53,
-                              left: 100,
+                                  right: 8,
+                                  bottom: 7,
+                                ),
+                                Positioned(
+                                  child: Image.asset(
+                                    'asset/call_icon.png',
+                                    height: 30,
+                                  ),
+                                  right: 45,
+                                  bottom: 7,
+                                ),
+                              ],
                             ),
-                            Positioned(
-                              child: Text(
-                                'Always Open',
-                                style: hospitalOpenTextStyle,
-                              ),
-                              top: 75,
-                              left: 100,
-                            ),
-                            Positioned(
-                              child: Image.asset(
-                                'asset/loc_icon.png',
-                                height: 30,
-                              ),
-                              right: 8,
-                              bottom: 7,
-                            ),
-                            Positioned(
-                              child: Image.asset(
-                                'asset/call_icon.png',
-                                height: 30,
-                              ),
-                              right: 45,
-                              bottom: 7,
-                            ),
-                          ],
+                          ),
                         ),
                       );
                     },
@@ -337,7 +398,48 @@ class HomePage extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 25,
+                  height: 22,
+                ),
+
+                // News
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 24,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Newsfeed',
+                        style: bodyBoldTextStyle,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      NewsTile(
+                        'asset/news_1.png',
+                        'Sharp rise in Covid-19 \ncases in border districts.',
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      NewsTile(
+                        'asset/news_2.png',
+                        'Covid scourge creeps up \nagain this month.',
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      NewsTile(
+                        'asset/news_3.png',
+                        '1 million dose of vaccine \nare on it\'s way.',
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  height: 40,
                 ),
               ],
             ),

@@ -12,11 +12,7 @@ class Service extends StatelessWidget {
     return Container(
       width: 100,
       height: 100,
-      child: TextButton(
-        onPressed: () {
-          print('Button is touched!');
-        },
-        child: Column(
+      child: Column(
           children: [
             Image.asset(
               imageUrl,
@@ -32,7 +28,6 @@ class Service extends StatelessWidget {
             ),
           ],
         ),
-      ),
     );
   }
 }

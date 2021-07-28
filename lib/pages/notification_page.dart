@@ -1,6 +1,4 @@
-import 'package:covid_app/pages/home_page.dart';
 import 'package:covid_app/theme.dart';
-import 'package:covid_app/widgets/bottom_app_bar.dart';
 import 'package:covid_app/widgets/notification_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -9,9 +7,6 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
-      bottomNavigationBar: BottomAppBar(
-        child: BottomBar(),
-      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,12 +19,7 @@ class NotificationPage extends StatelessWidget {
               child: Container(
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
@@ -69,32 +59,31 @@ class NotificationPage extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 5,
-              ),
-              child: Column(
-                children: [
-                  NotificationTile(
-                    'asset/notif_icon.png',
-                    'System Update',
-                    'Just Now',
-                    true,
-                  ),
-                  NotificationTile(
-                    'asset/notif_icon.png',
-                    'Covid Test Update',
-                    '1 hour ago',
-                    false,
-                  ),
-                  NotificationTile(
-                    'asset/notif_icon.png',
-                    'Congratulation',
-                    '46 min ago',
-                    false,
-                  ),
-                ],
-              )
-            ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 5,
+                ),
+                child: Column(
+                  children: [
+                    NotificationTile(
+                      'asset/notif_icon.png',
+                      'System Update',
+                      'Just Now',
+                      true,
+                    ),
+                    NotificationTile(
+                      'asset/notif_icon.png',
+                      'Covid Test Update',
+                      '1 hour ago',
+                      false,
+                    ),
+                    NotificationTile(
+                      'asset/notif_icon.png',
+                      'Congratulation',
+                      '46 min ago',
+                      false,
+                    ),
+                  ],
+                )),
             SizedBox(
               height: 10,
             ),
@@ -111,32 +100,31 @@ class NotificationPage extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 5,
-              ),
-              child: Column(
-                children: [
-                  NotificationTile(
-                    'asset/inbox_icon.png',
-                    'Support Chat',
-                    'Today',
-                    true,
-                  ),
-                  NotificationTile(
-                    'asset/inbox_icon.png',
-                    'Support Chat',
-                    '2 days ago',
-                    false,
-                  ),
-                  NotificationTile(
-                    'asset/inbox_icon.png',
-                    'Test Results',
-                    '4 days ago',
-                    false,
-                  ),
-                ],
-              )
-            ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 5,
+                ),
+                child: Column(
+                  children: [
+                    NotificationTile(
+                      'asset/inbox_icon.png',
+                      'Support Chat',
+                      'Today',
+                      true,
+                    ),
+                    NotificationTile(
+                      'asset/inbox_icon.png',
+                      'Support Chat',
+                      '2 days ago',
+                      false,
+                    ),
+                    NotificationTile(
+                      'asset/inbox_icon.png',
+                      'Test Results',
+                      '4 days ago',
+                      false,
+                    ),
+                  ],
+                )),
           ],
         ),
       ),
