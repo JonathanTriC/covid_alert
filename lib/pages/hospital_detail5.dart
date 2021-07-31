@@ -17,33 +17,6 @@ class HospitalDetail5Page extends StatelessWidget {
                 height: 450,
                 fit: BoxFit.cover,
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 24,
-                  left: 15,
-                  right: 15,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                        ),
-                        child: Image.asset(
-                          'asset/back_icon_fill.png',
-                          width: 44,
-                          height: 44,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               ListView(
                 children: [
                   SizedBox(

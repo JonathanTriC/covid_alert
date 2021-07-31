@@ -3,6 +3,7 @@ import 'package:covid_app/models/hospital_model.dart';
 import 'package:covid_app/pages/hospital_page.dart';
 import 'package:covid_app/pages/newsfeed_page.dart';
 import 'package:covid_app/pages/notification_page.dart';
+import 'package:covid_app/pages/profile_page.dart';
 import 'package:covid_app/pages/symptoms_page.dart';
 import 'package:covid_app/theme.dart';
 import 'package:covid_app/widgets/news_tile.dart';
@@ -43,9 +44,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
                       Container(
                         child: TextButton(
                           onPressed: () {
@@ -66,10 +64,25 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Image.asset(
-                        'asset/profile_pic.png',
-                        width: 44,
-                        height: 44,
+                      Container(
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfilePage(),
+                              ),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                          ),
+                          child: Image.asset(
+                            'asset/profile_pic.png',
+                            width: 44,
+                            height: 44,
+                          ),
+                        ),
                       ),
                     ],
                   ),
