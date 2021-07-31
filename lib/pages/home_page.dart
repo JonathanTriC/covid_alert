@@ -1,9 +1,11 @@
 import 'package:covid_app/models/hospital_model.dart';
+import 'package:covid_app/pages/404.dart';
 // import 'package:covid_app/pages/hospital_detail.dart';
 import 'package:covid_app/pages/hospital_page.dart';
 import 'package:covid_app/pages/newsfeed_page.dart';
 import 'package:covid_app/pages/notification_page.dart';
 import 'package:covid_app/pages/profile_page.dart';
+import 'package:covid_app/pages/statistics_page.dart';
 import 'package:covid_app/pages/symptoms_page.dart';
 import 'package:covid_app/theme.dart';
 import 'package:covid_app/widgets/news_tile.dart';
@@ -184,13 +186,39 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Service(
-                        'asset/registration_icon.png',
-                        'Registration',
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ErrorPage(),
+                            ),
+                          );
+                        },
+                        child: Service(
+                          'asset/registration_icon.png',
+                          'Registration',
+                        ),
                       ),
-                      Service(
-                        'asset/result_icon.png',
-                        'Result',
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ErrorPage(),
+                            ),
+                          );
+                        },
+                        child: Service(
+                          'asset/result_icon.png',
+                          'Result',
+                        ),
                       ),
                       TextButton(
                         style: TextButton.styleFrom(
@@ -222,9 +250,22 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Service(
-                        'asset/statistic_icon.png',
-                        'Statistics',
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => StatisticsPage(),
+                            ),
+                          );
+                        },
+                        child: Service(
+                          'asset/statistic_icon.png',
+                          'Statistics',
+                        ),
                       ),
                       TextButton(
                         style: TextButton.styleFrom(
